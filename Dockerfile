@@ -1,10 +1,10 @@
-# Use official PHP image with necessary extensions
+# Use official PHP image
 FROM php:8.3-fpm
 
 # Set working directory
 WORKDIR /var/www/html
 
-# Install system dependencies
+# Install system dependencies and PHP extensions
 RUN apt-get update && apt-get install -y \
     git \
     curl \
@@ -19,16 +19,9 @@ RUN apt-get update && apt-get install -y \
 # Install Composer
 COPY --from=composer:2.7 /usr/bin/composer /usr/bin/composer
 
-# Copy existing application code
-COPY . .
-
-# Install Laravel dependencies
-RUN composer install --no-interaction --optimize-autoloader
-
-# Set permissions for Laravel
+# Set permissions
 RUN chown -R www-data:www-data /var/www/html \
-    && chmod -R 775 storage bootstrap/cache
+    && chmod -R 775 /var/www/html
 
 EXPOSE 9000
-
 CMD ["php-fpm"]

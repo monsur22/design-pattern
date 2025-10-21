@@ -10,7 +10,7 @@ services:
     restart: unless-stopped
     working_dir: /var/www/html
     volumes:
-      - .:/var/www/html
+      - ./src:/var/www/html
     networks:
       - laravel
 
@@ -21,7 +21,7 @@ services:
     ports:
       - "8000:80"
     volumes:
-      - .:/var/www/html
+      - ./src:/var/www/html
       - ./nginx/conf.d:/etc/nginx/conf.d
     depends_on:
       - app
