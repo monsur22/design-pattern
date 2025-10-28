@@ -8,4 +8,4 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
-Route::get('/burger/make', [BurgerController::class, 'makeBurger']);
+Route::get('/burger/clone', [BurgerController::class, 'cloneBurger']);

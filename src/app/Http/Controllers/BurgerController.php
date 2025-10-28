@@ -3,21 +3,27 @@
 namespace App\Http\Controllers;
 
 use App\Builders\BurgerBuilder;
+use App\Prototypes\Burger;
 
 class BurgerController extends Controller
 {
-    public function makeBurger()
+    public function cloneBurger()
     {
-        $builder = new BurgerBuilder();
+        // Base prototype
+        $chickenBurger = new Burger('Chicken', true, 'Mayo');
 
-        $burger = $builder
-            ->addPatty('beef')
-            ->addCheese()
-            ->addLettuce()
-            ->addSauce('BBQ')
-            ->build();
+        // Clone the prototype
+        $spicyBurger = clone $chickenBurger;
+        $spicyBurger->sauce = 'Spicy BBQ';
 
-        return $burger->describe();
+        $sweetBurger = clone $chickenBurger;
+        $sweetBurger->sauce = 'Sweet Chili';
+
+        return [
+            'original' => $chickenBurger->describe(),
+            'spicy' => $spicyBurger->describe(),
+            'sweet' => $sweetBurger->describe(),
+        ];
     }
 }
 
