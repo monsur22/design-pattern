@@ -7,8 +7,12 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
+        "babenkoivan/elastic-scout-driver": "^4.0",
+        "elastic/transport": "^8.11",
+        "elasticsearch/elasticsearch": "^8.18",
         "laravel/framework": "^12.0",
         "laravel/sanctum": "^4.0",
+        "laravel/scout": "^10.21",
         "laravel/tinker": "^2.10.1"
     },
     "require-dev": {
