@@ -109,8 +109,7 @@ return [
     // ],
     'elastic' => [
         'hosts' => [
-            env('ELASTICSEARCH_HOSTS', 'http://localhost:9200'),
-        ],
+            env('ELASTIC_HOST', 'localhost:9200'),        ],
     ],
     /*
     |--------------------------------------------------------------------------
